@@ -1,0 +1,31 @@
+:root {
+  --color-bg: #08090c;
+  --color-bg-center: #12151c;
+  --color-fg: #f5f7fa;
+  --color-fg-muted: #9aa3af;
+
+  --color-accent: #7fb8ea;
+  --color-accent-strong: #a9d2f5;
+  --color-accent-hover: #5f9fd9;
+
+  --color-muted: #6b7280;
+  --color-border: rgba(127, 184, 234, 0.18);
+  --color-panel: #0d0f14;
+  --color-panel-raised: #12151b;
+
+  --font-display: "Archivo Black", "Arial Black", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --max-width: 720px;
+
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4.5rem;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+
+  --banner-height: 220px;
+}

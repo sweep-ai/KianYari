@@ -1,0 +1,26 @@
+.sticky-apply {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40;
+  padding: var(--space-sm) var(--space-md) calc(var(--space-sm) + env(safe-area-inset-bottom));
+  background: linear-gradient(to top, var(--color-bg) 60%, transparent);
+  transform: translateY(120%);
+  transition: transform 0.25s ease;
+  display: none;
+}
+
+.sticky-apply .apply-btn {
+  width: 100%;
+}
+
+.sticky-apply--visible {
+  transform: translateY(0);
+}
+
+@media (max-width: 720px) {
+  .sticky-apply {
+    display: block;
+  }
+}

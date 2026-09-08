@@ -1,0 +1,29 @@
+.scrolling-banner {
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.scrolling-banner__track {
+  display: flex;
+  gap: var(--space-sm);
+  width: max-content;
+  animation: scroll-x 40s linear infinite;
+}
+
+.scrolling-banner__track img {
+  height: var(--banner-height);
+  width: auto;
+  border-radius: var(--radius-sm);
+  filter: grayscale(0.3);
+  opacity: 0.85;
+}
+
+@keyframes scroll-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}

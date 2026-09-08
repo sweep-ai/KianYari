@@ -1,0 +1,28 @@
+.founder-manifesto {
+  padding: var(--space-xl) 0;
+}
+
+.founder-manifesto__inner img {
+  width: 100%;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-lg);
+}
+
+.founder-manifesto__line {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  margin: 0.4rem 0;
+  color: var(--color-fg-muted);
+}
+
+.founder-manifesto__line.is-emphasized {
+  color: var(--color-accent);
+}
+
+.founder-manifesto__bio {
+  margin-top: var(--space-md);
+  color: var(--color-fg-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}

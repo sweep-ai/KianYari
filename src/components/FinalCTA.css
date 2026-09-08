@@ -1,0 +1,31 @@
+.final-cta {
+  padding: var(--space-xl) 0 calc(var(--space-xl) + 2rem);
+  text-align: center;
+}
+
+.final-cta__kicker {
+  justify-content: center;
+  margin-bottom: var(--space-sm);
+}
+
+.final-cta h2 {
+  font-size: clamp(1.7rem, 6vw, 2.3rem);
+  max-width: 22ch;
+  margin: 0 auto;
+}
+
+.final-cta p {
+  color: var(--color-fg-muted);
+  max-width: 46ch;
+  margin: var(--space-sm) auto var(--space-md);
+}
+
+.final-cta__badges {
+  margin-top: var(--space-md);
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  font-size: 0.78rem;
+  color: var(--color-muted);
+}

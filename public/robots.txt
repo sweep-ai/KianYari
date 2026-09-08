@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /post-booking
+Sitemap: https://ky.training/sitemap.xml
