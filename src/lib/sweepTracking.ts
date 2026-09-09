@@ -2,8 +2,14 @@
 // FUNNEL_ID is fixed per Kian's instruction (this funnel's Sweep OS record).
 // Event names below are custom-defined for this funnel (also per Kian's
 // instruction) — mirror them exactly into the Sweep OS Funnels > Steps tab.
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://api.sweepai.site";
+const DIRECT_API_BASE = (import.meta.env.VITE_API_BASE_URL as string | undefined)?.replace(/\/$/, "");
 const FUNNEL_ID = import.meta.env.VITE_FUNNEL_ID || "af2f3b22-0ab4-40c1-8ba0-5240df806677";
+
+/** Same-origin proxy on Vercel avoids browser CORS to api.sweepai.site. */
+function sweepUrl(path: "events" | "leads"): string {
+  if (DIRECT_API_BASE) return `${DIRECT_API_BASE}/funnels/${path}`;
+  return `/api/funnels/${path}`;
+}
 
 export const EVENTS = {
   PAGE_VIEW: "page_view",
@@ -62,7 +68,7 @@ export async function trackEvent(
   if (idempotencyKey) body.idempotency_key = idempotencyKey;
 
   try {
-    const res = await fetch(`${API_BASE_URL}/funnels/events`, {
+    const res = await fetch(sweepUrl("events"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
@@ -93,7 +99,7 @@ export type LeadPayload = {
 export async function submitLead(fields: LeadPayload): Promise<{ clientId?: string; created?: boolean; error?: string }> {
   if (!FUNNEL_ID) return { error: "FUNNEL_ID not configured" };
   try {
-    const res = await fetch(`${API_BASE_URL}/funnels/leads`, {
+    const res = await fetch(sweepUrl("leads"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ funnel_id: FUNNEL_ID, ...fields }),

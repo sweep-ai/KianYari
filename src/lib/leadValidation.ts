@@ -53,8 +53,8 @@ export function validateContact(
     errors.playerName = `Enter full name (at least ${NAME_MIN_LENGTH} characters).`;
   }
 
-  if (contact.parentName && contact.parentName.length < NAME_MIN_LENGTH) {
-    errors.parentName = `Enter a valid parent name (at least ${NAME_MIN_LENGTH} characters).`;
+  if (contact.parentName.length < NAME_MIN_LENGTH) {
+    errors.parentName = `Enter parent/guardian name (at least ${NAME_MIN_LENGTH} characters).`;
   }
 
   const ageNum = Number(contact.age);
@@ -68,7 +68,9 @@ export function validateContact(
     errors.email = "Enter a real email you check regularly.";
   }
 
-  if (contact.phone && !isValidPhone(contact.phone)) {
+  if (!contact.phone.trim()) {
+    errors.phone = "Enter a phone number.";
+  } else if (!isValidPhone(contact.phone)) {
     errors.phone = "Enter a valid phone number (10+ digits).";
   }
 

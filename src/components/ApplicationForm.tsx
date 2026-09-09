@@ -115,17 +115,13 @@ export default function ApplicationForm({ open = false, onClose, variant = "moda
     setFieldErrors({});
     const disqualified = isDisqualified();
     const formId = "epa-application";
-    const notes = [
-      sanitized.parentName ? `Parent/guardian: ${sanitized.parentName}` : null,
-    ]
-      .filter(Boolean)
-      .join("\n");
+    const notes = `Parent/guardian: ${sanitized.parentName}`;
 
     const lead = await submitLead({
       name: sanitized.playerName,
       email: sanitized.email,
-      phone: sanitized.phone || undefined,
-      notes: notes || undefined,
+      phone: sanitized.phone,
+      notes,
       source: "quiz",
       funnel_step_reached: "form_submit",
       quiz_answers: { ...answers, age: sanitized.age, disqualified },

@@ -97,9 +97,9 @@ export const contactStep = {
     },
     {
       name: "parentName",
-      label: "Parent Name (optional)",
+      label: "Parent Name",
       placeholder: "Parent or guardian",
-      required: false,
+      required: true,
       inputType: "text",
       autoComplete: "name",
     },
@@ -123,9 +123,9 @@ export const contactStep = {
     },
     {
       name: "phone",
-      label: "Phone (optional)",
+      label: "Phone",
       placeholder: "(555) 123-4567",
-      required: false,
+      required: true,
       inputType: "tel",
       autoComplete: "tel",
     },
