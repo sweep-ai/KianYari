@@ -1,4 +1,5 @@
 import { hero } from "../data/copy";
+import EpaLogo from "./EpaLogo";
 import "./PageHero.css";
 
 export default function PageHero() {
@@ -6,6 +7,9 @@ export default function PageHero() {
   return (
     <section className="page-hero">
       <div className="container">
+        <div className="page-hero__brand">
+          <EpaLogo variant="lockup" />
+        </div>
         <div className="eyebrow page-hero__step">
           <span className="dot" />
           {hero.eyebrowStep}

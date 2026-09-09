@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { brand, nav } from "../data/copy";
-import { logo } from "../data/assets";
+import EpaLogo from "./EpaLogo";
 import ApplyButton from "./ApplyButton";
 import "./Layout.css";
 
@@ -22,8 +22,7 @@ export default function Header({ onApply }: { onApply?: () => void }) {
     <header className="site-header">
       <div className="site-header__inner container">
         <Link to="/" className="site-header__logo">
-          <img src={logo} alt={brand.name} width={28} height={28} />
-          <span>{brand.shortName}</span>
+          <EpaLogo variant="mark" />
         </Link>
         <nav className="site-header__nav">
           {nav.map((item) => (
@@ -32,7 +31,10 @@ export default function Header({ onApply }: { onApply?: () => void }) {
             </a>
           ))}
         </nav>
-        <ApplyButton className="site-header__cta" onClick={onApply}>
+        <ApplyButton
+          className="site-header__cta"
+          onClick={onApply ?? (() => navigate("/#apply"))}
+        >
           {brand.applyLabel} ↗
         </ApplyButton>
       </div>

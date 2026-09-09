@@ -1,93 +1,103 @@
-import { useEffect } from "react";
-import Header from "../components/Layout";
+import { useEffect, useRef } from "react";
 import Footer from "../components/Footer";
-import { postBooking, faq } from "../data/copy";
+import FaqSection from "../components/FaqSection";
+import RealClientStories from "../components/RealClientStories";
+import ScrollingBanner from "../components/ScrollingBanner";
+import { postBooking } from "../data/copy";
+import { useExclusiveYouTube } from "../lib/exclusiveVideo";
 import { trackEvent, EVENTS } from "../lib/sweepTracking";
 import { videos } from "../data/videos";
+import "./PostBookingPage.css";
+
+type StepHeaderProps = {
+  n: number;
+  title: string;
+  body?: string;
+};
+
+function StepHeader({ n, title, body }: StepHeaderProps) {
+  return (
+    <div className="post-booking-step">
+      <div className="post-booking-step__label">
+        <span className="post-booking-step__num">{n}</span>
+        <span className="post-booking-step__name">{title}</span>
+      </div>
+      {body ? <p className="post-booking-step__body">{body}</p> : null}
+    </div>
+  );
+}
 
 export default function PostBookingPage() {
   useEffect(() => {
     void trackEvent(EVENTS.POST_BOOKING_VIEW, { page: "post-booking" });
   }, []);
 
-  const steps = [
-    { n: 1, title: "Watch The Welcome Video", body: "A quick intro to what happens next." },
-    { n: 2, title: postBooking.confirmHeadline, body: postBooking.confirmBody },
-    { n: 3, title: "Confirm Your Calendar Invite", body: "Check your email for the calendar invite and accept it." },
-  ];
+  const v = videos.postBookingPreface;
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const embedSrc =
+    v.provider === "youtube"
+      ? `https://www.youtube.com/embed/${v.id}?rel=0&enablejsapi=1`
+      : `https://player.vimeo.com/video/${v.id}`;
+
+  useExclusiveYouTube("post-booking-vsl", iframeRef);
 
   return (
     <>
-      <Header />
-      <main className="container" style={{ padding: "3rem 1.5rem" }}>
+      <main className="container page-shell">
         <h1>{postBooking.title}</h1>
         <p style={{ color: "var(--color-accent)", fontWeight: 700, fontSize: "0.85rem", letterSpacing: "0.06em" }}>
           {postBooking.mandatorySub}
         </p>
 
-        <div
-          style={{
-            marginTop: "1.5rem",
-            aspectRatio: "16/9",
-            borderRadius: "var(--radius-md)",
-            overflow: "hidden",
-            border: "1px solid var(--color-border)",
-          }}
-        >
-          <iframe
-            src={`https://player.vimeo.com/video/${videos.postBookingPreface.id}`}
-            title={videos.postBookingPreface.title}
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
-            style={{ width: "100%", height: "100%", border: 0 }}
+        <section className="post-booking-section post-booking-section--info">
+          <StepHeader n={1} title="Watch The Welcome Video" body="A quick intro to what happens next." />
+          <div className="post-booking-section__media">
+            <iframe
+              ref={iframeRef}
+              src={embedSrc}
+              title={v.title}
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </section>
+
+        <section className="post-booking-section">
+          <StepHeader n={2} title={postBooking.confirmHeadline} body={postBooking.confirmBody} />
+        </section>
+
+        <section className="post-booking-section">
+          <StepHeader
+            n={3}
+            title="Confirm Your Calendar Invite"
+            body="Check your email for the calendar invite and tap Yes to confirm."
           />
-        </div>
-
-        <ol style={{ marginTop: "2rem", padding: 0, listStyle: "none" }}>
-          {steps.map((s) => (
-            <li
-              key={s.n}
-              style={{
-                display: "flex",
-                gap: "1rem",
-                padding: "1rem 0",
-                borderBottom: "1px solid var(--color-border)",
-              }}
-            >
-              <span
-                style={{
-                  width: 28,
-                  height: 28,
-                  borderRadius: "50%",
-                  background: "var(--color-accent)",
-                  color: "#0a1420",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontWeight: 700,
-                  flexShrink: 0,
-                }}
-              >
-                {s.n}
-              </span>
-              <div>
-                <div style={{ fontWeight: 700 }}>{s.title}</div>
-                <div style={{ color: "var(--color-fg-muted)", fontSize: "0.9rem" }}>{s.body}</div>
-              </div>
-            </li>
-          ))}
-        </ol>
-
-        <h2 style={{ marginTop: "2.5rem" }}>{postBooking.faqHeadline}</h2>
-        <div style={{ marginTop: "1rem", display: "flex", flexDirection: "column", gap: "0.8rem" }}>
-          {faq.items.slice(0, 3).map((f) => (
-            <div key={f.q}>
-              <div style={{ fontWeight: 600 }}>{f.q}</div>
-              <div style={{ color: "var(--color-fg-muted)", fontSize: "0.88rem" }}>{f.a}</div>
-            </div>
-          ))}
-        </div>
+          <div className="post-booking-section__calendar">
+            <img
+              src="/calendar-invite.png"
+              alt="Google Calendar invite — tap Yes to confirm your call"
+              loading="lazy"
+            />
+          </div>
+        </section>
       </main>
+
+      <section id="client-results" className="post-booking-section post-booking-section--full" style={{ scrollMarginTop: "1rem" }}>
+        <StepHeader n={4} title={postBooking.clientResultsHeadline} body={postBooking.clientResultsBody} />
+        <ScrollingBanner />
+        <RealClientStories />
+        <div style={{ marginTop: "1rem" }}>
+          <ScrollingBanner reverse captioned />
+        </div>
+      </section>
+
+      <section className="post-booking-section post-booking-section--full post-booking-section--faq">
+        <div className="container">
+          <StepHeader n={5} title={postBooking.faqStepHeadline} body={postBooking.faqStepBody} />
+        </div>
+        <FaqSection hideTitle compact />
+      </section>
+
       <Footer />
     </>
   );

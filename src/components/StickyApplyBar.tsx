@@ -7,7 +7,7 @@ export default function StickyApplyBar({ onApply }: { onApply: () => void }) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const form = document.getElementById("application-anchor");
+    const form = document.getElementById("apply") || document.getElementById("application-anchor");
     if (!form) {
       setVisible(true);
       return;
@@ -19,7 +19,7 @@ export default function StickyApplyBar({ onApply }: { onApply: () => void }) {
     io.observe(form);
     const onScroll = () => setVisible(window.scrollY > 400 && !isFormNearViewport());
     function isFormNearViewport() {
-      const el = document.getElementById("application-anchor");
+      const el = document.getElementById("apply") || document.getElementById("application-anchor");
       if (!el) return false;
       const r = el.getBoundingClientRect();
       return r.top < window.innerHeight && r.bottom > 0;

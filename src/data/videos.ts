@@ -5,11 +5,12 @@ export const videos = {
   vsl: {
     provider: "vimeo" as const,
     id: "1205640310",
+    hash: "4537cb0b52",
     title: "How Pro Athletes Went From Average To Elite",
   },
   postBookingPreface: {
-    provider: "vimeo" as const,
-    id: "1204829041",
+    provider: "youtube" as const,
+    id: "jA766plyTFY",
     title: "Welcome — What Happens Next",
   },
   postBookingBreakdown: {
@@ -18,3 +19,28 @@ export const videos = {
     title: "Your Call Breakdown",
   },
 };
+
+export const videoTestimonials = [
+  {
+    src: "/testimonials/t1.mp4",
+    poster: "/testimonials/t1-poster.jpg",
+    name: "EPA Parent & Player",
+    role: "Current EPA athlete family",
+    orientation: "landscape" as const,
+  },
+  {
+    src: "/testimonials/t2.mp4",
+    poster: "/testimonials/t2-poster.jpg",
+    name: "Harry Jolley",
+    role: "Chattanooga Red Wolves SC · USL League 1",
+    orientation: "portrait" as const,
+  },
+  {
+    src: "/testimonials/t3.mp4",
+    poster: "/testimonials/t3-poster.jpg",
+    name: "Jesús Barea",
+    role: "Real Salt Lake · MLS · First Round Pick #19",
+    orientation: "portrait" as const,
+  },
+];
+

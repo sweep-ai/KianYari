@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { footer } from "../data/copy";
+import EpaLogo from "./EpaLogo";
 import "./Footer.css";
 
 export default function Footer() {
@@ -7,8 +8,10 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="container site-footer__inner">
         <div>
-          <div className="site-footer__brand">{footer.brandLine}</div>
-          <div className="site-footer__sub">{footer.subLine}</div>
+          <EpaLogo variant="lockup" />
+          <div className="site-footer__sub" style={{ marginTop: "0.6rem" }}>
+            {footer.subLine}
+          </div>
         </div>
         <nav className="site-footer__links">
           <Link to="/about">About</Link>

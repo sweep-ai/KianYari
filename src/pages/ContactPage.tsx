@@ -1,11 +1,9 @@
-import Header from "../components/Layout";
 import Footer from "../components/Footer";
 
 export default function ContactPage() {
   return (
     <>
-      <Header />
-      <main className="container" style={{ padding: "3rem 1.5rem", maxWidth: 720 }}>
+      <main className="container page-shell" style={{ maxWidth: 720 }}>
         <h1>Contact</h1>
         <p style={{ color: "var(--color-fg-muted)", marginTop: "1rem" }}>
           Questions about the program? Reach out directly.

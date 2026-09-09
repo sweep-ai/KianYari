@@ -19,8 +19,11 @@ export default function ExclusiveProgram({ onApply }: { onApply: () => void }) {
         <p>{exclusive.body}</p>
         <div className="exclusive-program__stats">
           {exclusive.stats.map((s) => (
-            <div key={s.label}>
-              <div className="exclusive-program__stat-value">{s.value}</div>
+            <div key={s.label} className="exclusive-program__stat">
+              <div className="exclusive-program__stat-value">
+                {s.value.replace(/\+$/, "")}
+                {s.value.endsWith("+") ? <span>+</span> : null}
+              </div>
               <div className="exclusive-program__stat-label">{s.label}</div>
             </div>
           ))}

@@ -1,19 +1,20 @@
 :root {
-  --color-bg: #08090c;
-  --color-bg-center: #12151c;
-  --color-fg: #f5f7fa;
-  --color-fg-muted: #9aa3af;
+  --color-bg: #131312;
+  --color-bg-center: #1c1c1a;
+  --color-fg: #f2f2f2;
+  --color-fg-muted: #b3b3ae;
 
-  --color-accent: #7fb8ea;
-  --color-accent-strong: #a9d2f5;
-  --color-accent-hover: #5f9fd9;
+  --color-accent: #466346;
+  --color-accent-strong: #5a7d5a;
+  --color-accent-hover: #3a533a;
 
-  --color-muted: #6b7280;
-  --color-border: rgba(127, 184, 234, 0.18);
-  --color-panel: #0d0f14;
-  --color-panel-raised: #12151b;
+  --color-muted: #8a8a84;
+  --color-border: rgba(70, 99, 70, 0.32);
+  --color-panel: #181817;
+  --color-panel-raised: #1f1f1c;
+  --color-on-accent: #f2f2f2;
 
-  --font-display: "Archivo Black", "Arial Black", sans-serif;
+  --font-display: "Barlow Condensed", "DIN Alternate", "Arial Narrow", sans-serif;
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 
   --max-width: 720px;
@@ -28,4 +29,5 @@
   --radius-md: 14px;
 
   --banner-height: 220px;
+  --banner-caption-height: 280px;
 }

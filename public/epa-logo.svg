@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Elite Player Academy">
+  <circle cx="256" cy="256" r="256" fill="#131312"/>
+  <g fill="#F2F2F2" transform="translate(256 188) skewX(-10) translate(-256 -188)">
+    <rect x="86" y="132" width="72" height="14" rx="1"/>
+    <rect x="86" y="168" width="72" height="14" rx="1"/>
+    <rect x="86" y="204" width="72" height="14" rx="1"/>
+
+    <rect x="182" y="132" width="15" height="110"/>
+    <path fill-rule="evenodd" d="M206 132h34c26 0 46 17 46 40s-20 40-46 40h-34V132zm16 16h18c16 0 28 10 28 24s-12 24-28 24h-18V148z"/>
+
+    <path d="M310 242 L356 128 L402 242" fill="none" stroke="#F2F2F2" stroke-width="16" stroke-linejoin="miter" stroke-linecap="butt"/>
+  </g>
+  <text x="256" y="318" text-anchor="middle" fill="#F2F2F2" font-family="Arial Narrow, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="17" font-weight="700" letter-spacing="5.5">ELITE PLAYER ACADEMY</text>
+  <path d="M118 348 H226" fill="none" stroke="#F2F2F2" stroke-width="2"/>
+  <path d="M286 348 H394" fill="none" stroke="#F2F2F2" stroke-width="2"/>
+  <path d="M240 358 L256 338 L272 358" fill="none" stroke="#F2F2F2" stroke-width="2" stroke-linejoin="miter"/>
+</svg>

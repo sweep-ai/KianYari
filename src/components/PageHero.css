@@ -1,29 +1,40 @@
 .page-hero {
-  padding: var(--space-xl) 0 var(--space-md);
+  padding: max(0.35rem, env(safe-area-inset-top)) 0 var(--space-sm);
   text-align: center;
+}
+
+.page-hero__brand {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.2rem;
+}
+
+.page-hero__brand .epa-logo img {
+  width: 148px;
+  height: 148px;
 }
 
 .page-hero__step {
   display: inline-flex;
-  padding: 0.4rem 0.9rem;
+  padding: 0.35rem 0.85rem;
   border-radius: 999px;
   border: 1px solid var(--color-border);
   background: var(--color-panel);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-sm);
 }
 
 .page-hero__headline {
-  font-size: clamp(2.1rem, 8vw, 3.4rem);
+  font-size: clamp(2rem, 7.5vw, 3.1rem);
+  line-height: 1;
 }
 
 .page-hero__sub {
-  margin: var(--space-md) auto 0;
+  margin: var(--space-sm) auto 0;
   max-width: 42ch;
   color: var(--color-fg-muted);
-  font-size: 1.02rem;
+  font-size: 0.98rem;
 }
 
-.page-hero__sub b,
-.page-hero__sub strong {
-  color: var(--color-fg);
+.page-hero + .container {
+  margin-top: -0.15rem;
 }

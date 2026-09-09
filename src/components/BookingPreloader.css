@@ -1,0 +1,11 @@
+.booking-preloader {
+  position: fixed;
+  left: -9999px;
+  top: 0;
+  width: 640px;
+  height: 640px;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}

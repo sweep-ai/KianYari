@@ -51,35 +51,85 @@ export const quizSteps: QuizStep[] = [
   },
   {
     id: "investment",
-    title: "Investment Level",
-    prompt: "How much are you willing to invest to reach your maximum potential?",
-    helper: "Serious players invest in their development.",
+    title: "Commitment",
+    prompt: "If things are a perfect fit, are you willing to invest into professional expertise to hit your goals?",
     type: "single",
     options: [
-      { code: "under_100", label: "Under $100", disqualify: true },
-      { code: "100_499", label: "$100 – $499" },
-      { code: "500_1000", label: "$500 – $1,000" },
-      { code: "1000_plus", label: "$1,000+" },
+      { code: "yes_sign_up", label: "Yes absolutely sign me up right now" },
+      { code: "potentially_learn_more", label: "Potentially, I need to learn more" },
+      { code: "just_curious", label: "No, I'm just curious right now", disqualify: true },
     ],
   },
 ];
 
+export type ContactFieldName = "playerName" | "parentName" | "age" | "email" | "phone";
+
 export type ContactFields = {
   playerName: string;
-  parentName?: string;
+  parentName: string;
   age: string;
   email: string;
+  phone: string;
+};
+
+export type ContactFieldConfig = {
+  name: ContactFieldName;
+  label: string;
+  placeholder: string;
+  required: boolean;
+  inputType: "text" | "email" | "tel" | "number";
+  min?: number;
+  max?: number;
+  autoComplete?: string;
 };
 
 export const contactStep = {
   title: "Your Information",
   prompt: "Almost done — tell us about you",
   fields: [
-    { name: "playerName", label: "Player Name", placeholder: "Full name", required: true },
-    { name: "parentName", label: "Parent Name (optional)", placeholder: "Parent or guardian", required: false },
-    { name: "age", label: "Age", placeholder: "Any age", required: true },
-    { name: "email", label: "Email", placeholder: "player@email.com", required: true },
-  ],
+    {
+      name: "playerName",
+      label: "Player Name",
+      placeholder: "Full name",
+      required: true,
+      inputType: "text",
+      autoComplete: "name",
+    },
+    {
+      name: "parentName",
+      label: "Parent Name (optional)",
+      placeholder: "Parent or guardian",
+      required: false,
+      inputType: "text",
+      autoComplete: "name",
+    },
+    {
+      name: "age",
+      label: "Age",
+      placeholder: "e.g. 16",
+      required: true,
+      inputType: "number",
+      min: 8,
+      max: 25,
+      autoComplete: "off",
+    },
+    {
+      name: "email",
+      label: "Email",
+      placeholder: "player@email.com",
+      required: true,
+      inputType: "email",
+      autoComplete: "email",
+    },
+    {
+      name: "phone",
+      label: "Phone (optional)",
+      placeholder: "(555) 123-4567",
+      required: false,
+      inputType: "tel",
+      autoComplete: "tel",
+    },
+  ] satisfies ContactFieldConfig[],
 };
 
 export const totalSteps = quizSteps.length + 1;

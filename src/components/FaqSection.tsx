@@ -3,12 +3,14 @@ import { faq } from "../data/copy";
 import SectionTitle from "./SectionTitle";
 import "./FaqSection.css";
 
-export default function FaqSection() {
+type Props = { hideTitle?: boolean; compact?: boolean };
+
+export default function FaqSection({ hideTitle = false, compact = false }: Props) {
   const [open, setOpen] = useState<number | null>(null);
   return (
-    <section id="faq" className="faq-section">
+    <section id="faq" className={`faq-section${compact ? " faq-section--compact" : ""}`}>
       <div className="container">
-        <SectionTitle kicker={faq.kicker} title={faq.headline} sub={faq.sub} />
+        {hideTitle ? null : <SectionTitle kicker={faq.kicker} title={faq.headline} sub={faq.sub} />}
         <div className="faq-list">
           {faq.items.map((item, i) => (
             <div key={item.q} className="faq-item">

@@ -1,12 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { getBookingEmbedUrl } from "../lib/booking";
 import { trackEvent, EVENTS } from "../lib/sweepTracking";
 import "./BookingWidget.css";
 
-const BOOKING_EMBED_URL = import.meta.env.VITE_BOOKING_EMBED_URL as string | undefined;
-
 export default function BookingWidget() {
+  const embedUrl = getBookingEmbedUrl();
+  const [loaded, setLoaded] = useState(false);
+
   useEffect(() => {
-    if (!BOOKING_EMBED_URL) return;
+    if (!embedUrl) return;
     function onMessage(e: MessageEvent) {
       if (typeof e.data !== "object" || !e.data) return;
       const evt = (e.data as { event?: string }).event;
@@ -17,9 +19,13 @@ export default function BookingWidget() {
     }
     window.addEventListener("message", onMessage);
     return () => window.removeEventListener("message", onMessage);
-  }, []);
+  }, [embedUrl]);
 
-  if (!BOOKING_EMBED_URL) {
+  useEffect(() => {
+    setLoaded(false);
+  }, [embedUrl]);
+
+  if (!embedUrl) {
     return (
       <div className="booking-widget booking-widget--fallback">
         <p>Booking calendar isn't connected yet.</p>
@@ -33,7 +39,18 @@ export default function BookingWidget() {
 
   return (
     <div className="booking-widget">
-      <iframe src={BOOKING_EMBED_URL} title="Book a call" />
+      {!loaded ? (
+        <div className="booking-widget__loading" aria-live="polite">
+          <span className="booking-widget__spinner" aria-hidden="true" />
+          <p>Loading calendar…</p>
+        </div>
+      ) : null}
+      <iframe
+        src={embedUrl}
+        title="Book a call"
+        className={loaded ? "is-ready" : "is-loading"}
+        onLoad={() => setLoaded(true)}
+      />
     </div>
   );
 }

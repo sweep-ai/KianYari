@@ -36,6 +36,10 @@ function getSessionId(): string {
   return s;
 }
 
+export function formSubmitIdempotencyKey(formId: string): string {
+  return `form_submit_${getSessionId()}_${formId}`;
+}
+
 export async function trackEvent(
   eventName: string,
   metadata: Record<string, unknown> = {},
@@ -58,12 +62,16 @@ export async function trackEvent(
   if (idempotencyKey) body.idempotency_key = idempotencyKey;
 
   try {
-    await fetch(`${API_BASE_URL}/funnels/events`, {
+    const res = await fetch(`${API_BASE_URL}/funnels/events`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
       keepalive: true,
     });
+    if (!res.ok) {
+      const detail = await res.json().catch(() => ({}));
+      console.warn("trackEvent failed", eventName, res.status, detail);
+    }
   } catch (e) {
     console.warn("trackEvent failed", eventName, e);
   }

@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import Header from "../components/Layout";
 import Footer from "../components/Footer";
 import ScrollingBanner from "../components/ScrollingBanner";
 import BookingWidget from "../components/BookingWidget";
@@ -13,9 +12,8 @@ export default function BookingPage() {
 
   return (
     <>
-      <Header />
       <main>
-        <div className="container" style={{ padding: "3rem 1.5rem", textAlign: "center" }}>
+        <div className="container page-shell" style={{ textAlign: "center" }}>
           <span className="eyebrow" style={{ justifyContent: "center" }}>
             <span className="dot" />
             {booking.kicker}

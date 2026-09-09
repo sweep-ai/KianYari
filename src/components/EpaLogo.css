@@ -1,0 +1,15 @@
+.epa-logo {
+  display: inline-flex;
+  line-height: 0;
+}
+
+.epa-logo img {
+  display: block;
+  width: 48px;
+  height: 48px;
+}
+
+.epa-logo--lockup img {
+  width: 168px;
+  height: 168px;
+}

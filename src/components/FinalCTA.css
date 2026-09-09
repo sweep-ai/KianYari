@@ -1,5 +1,5 @@
 .final-cta {
-  padding: var(--space-xl) 0 calc(var(--space-xl) + 2rem);
+  padding: var(--space-lg) 0 calc(var(--space-md) + 1.25rem);
   text-align: center;
 }
 
