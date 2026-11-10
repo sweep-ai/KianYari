@@ -7,7 +7,7 @@ import "./RealClientStories.css";
 function TestimonialVideo({ src, poster }: { src: string; poster: string }) {
   const videoRef = useExclusiveHtmlVideo(`testimonial-${src}`);
 
-  return <video ref={videoRef} src={src} poster={poster} controls playsInline preload="metadata" />;
+  return <video ref={videoRef} src={src} poster={poster} controls playsInline preload="none" />;
 }
 
 export default function RealClientStories() {

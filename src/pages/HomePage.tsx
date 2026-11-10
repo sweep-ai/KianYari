@@ -47,14 +47,13 @@ export default function HomePage() {
           </div>
         </div>
 
+        <RealClientStories />
         <div style={{ marginTop: "3rem" }}>
           <ScrollingBanner />
           <div style={{ marginTop: "1rem" }}>
             <ScrollingBanner reverse captioned />
           </div>
         </div>
-
-        <RealClientStories />
         <ProgramSystem onApply={openForm} />
         <ExclusiveProgram onApply={openForm} />
         <FounderManifesto />

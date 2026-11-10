@@ -84,8 +84,8 @@ export default function PostBookingPage() {
 
       <section id="client-results" className="post-booking-section post-booking-section--full" style={{ scrollMarginTop: "1rem" }}>
         <StepHeader n={4} title={postBooking.clientResultsHeadline} body={postBooking.clientResultsBody} />
-        <ScrollingBanner />
         <RealClientStories />
+        <ScrollingBanner />
         <div style={{ marginTop: "1rem" }}>
           <ScrollingBanner reverse captioned />
         </div>

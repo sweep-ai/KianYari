@@ -4,9 +4,9 @@
 export const videos = {
   vsl: {
     provider: "vimeo" as const,
-    id: "1205640310",
-    hash: "4537cb0b52",
-    title: "How Pro Athletes Went From Average To Elite",
+    id: "1245558939",
+    hash: "42c614749e",
+    title: "MANDATORY: WATCH THIS VIDEO",
   },
   postBookingPreface: {
     provider: "youtube" as const,
@@ -21,6 +21,13 @@ export const videos = {
 };
 
 export const videoTestimonials = [
+  {
+    src: "/testimonials/t6.mp4",
+    poster: "/testimonials/t6-poster.jpg",
+    name: "Vanessa",
+    role: "EPA Parent",
+    orientation: "portrait" as const,
+  },
   {
     src: "/testimonials/t1.mp4",
     poster: "/testimonials/t1-poster.jpg",
@@ -40,6 +47,20 @@ export const videoTestimonials = [
     poster: "/testimonials/t3-poster.jpg",
     name: "Jesús Barea",
     role: "Real Salt Lake · MLS · First Round Pick #19",
+    orientation: "portrait" as const,
+  },
+  {
+    src: "/testimonials/t4.mp4",
+    poster: "/testimonials/t4-poster.jpg",
+    name: "In-Game Training",
+    role: "KY Training",
+    orientation: "portrait" as const,
+  },
+  {
+    src: "/testimonials/t5.mp4",
+    poster: "/testimonials/t5-poster.jpg",
+    name: "From No Confidence to Scoring",
+    role: "KY Training",
     orientation: "portrait" as const,
   },
 ];
