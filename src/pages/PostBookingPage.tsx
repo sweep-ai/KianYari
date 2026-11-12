@@ -4,7 +4,7 @@ import FaqSection from "../components/FaqSection";
 import RealClientStories from "../components/RealClientStories";
 import ScrollingBanner from "../components/ScrollingBanner";
 import { postBooking } from "../data/copy";
-import { useExclusiveYouTube } from "../lib/exclusiveVideo";
+import { useExclusiveVimeo } from "../lib/exclusiveVideo";
 import { trackEvent, EVENTS } from "../lib/sweepTracking";
 import { videos } from "../data/videos";
 import "./PostBookingPage.css";
@@ -34,12 +34,10 @@ export default function PostBookingPage() {
 
   const v = videos.postBookingPreface;
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const embedSrc =
-    v.provider === "youtube"
-      ? `https://www.youtube.com/embed/${v.id}?rel=0&enablejsapi=1`
-      : `https://player.vimeo.com/video/${v.id}`;
+  const hash = v.hash ? `h=${v.hash}&` : "";
+  const embedSrc = `https://player.vimeo.com/video/${v.id}?${hash}badge=0&autopause=0`;
 
-  useExclusiveYouTube("post-booking-vsl", iframeRef);
+  useExclusiveVimeo("post-booking-vsl", iframeRef);
 
   return (
     <>

@@ -4,14 +4,15 @@
 export const videos = {
   vsl: {
     provider: "vimeo" as const,
+    id: "1205640310",
+    hash: "4537cb0b52",
+    title: "How Pro Athletes Went From Average To Elite",
+  },
+  postBookingPreface: {
+    provider: "vimeo" as const,
     id: "1245558939",
     hash: "42c614749e",
     title: "MANDATORY: WATCH THIS VIDEO",
-  },
-  postBookingPreface: {
-    provider: "youtube" as const,
-    id: "jA766plyTFY",
-    title: "Welcome — What Happens Next",
   },
   postBookingBreakdown: {
     provider: "vimeo" as const,
