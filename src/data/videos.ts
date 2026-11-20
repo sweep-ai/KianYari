@@ -30,6 +30,13 @@ export const videoTestimonials = [
     orientation: "portrait" as const,
   },
   {
+    src: "/testimonials/t7.mp4",
+    poster: "/testimonials/t7-poster.jpg",
+    name: "Autumn Piso",
+    role: "ECNL parent on what her son was missing",
+    orientation: "portrait" as const,
+  },
+  {
     src: "/testimonials/t1.mp4",
     poster: "/testimonials/t1-poster.jpg",
     name: "EPA Parent & Player",
